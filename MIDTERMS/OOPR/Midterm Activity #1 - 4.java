@@ -37,7 +37,7 @@ class Main {
             }
         }
 
-        System.out.print("Odd elements: ");
+        System.out.println("Odd elements: ");
         for(int i = 0; i < arrSize; i++) {
             if(lists[i] % 2 == 1) {
                 System.out.print(lists[i] + " ");
