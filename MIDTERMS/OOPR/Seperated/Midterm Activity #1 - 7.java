@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 
-public class Mavenproject1 {
+public class Main {
     public static void main(String[] args) {
         // Replace the data.txt with the correct file path
         File file = new File("data.txt");
