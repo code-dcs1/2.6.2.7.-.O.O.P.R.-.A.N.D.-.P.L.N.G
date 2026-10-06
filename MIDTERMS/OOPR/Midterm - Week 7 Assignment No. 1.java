@@ -8,9 +8,9 @@ public class Main {
         int number = scanner.nextInt();
         
         if (number % 2 == 0) {
-            System.out.println("It’s an even number");
+            System.out.println("It's an even number");
         } else {
-            System.out.println("It’s an odd number!");
+            System.out.println("It's an odd number!");
         }
         
         scanner.close();
