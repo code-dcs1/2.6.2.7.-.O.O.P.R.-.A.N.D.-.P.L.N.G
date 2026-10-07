@@ -203,7 +203,7 @@ def main():
                 case 6:
                     act_six()
                 case _:
-                    print("Invalid choice! Please restart and enter a number between 1 and 7.")
+                    print("Invalid choice! Please restart and enter a number between 1 and 6.")
                     
         except ValueError:
             print("\nInvalid input! Please enter a valid integer choice.")
