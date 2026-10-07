@@ -1,67 +1,4 @@
-import os
-import re
 import sys
-
-class Student:
-    _no_of_students = 0
-
-    def __init__(self, student_no=None, student_name=None, date_of_birth=None, tariff_points=None):
-        if student_no is None and student_name is None and date_of_birth is None and tariff_points is None:
-            self._student_no = "not known"
-            self._student_name = "not known"
-            self._date_of_birth = "01/01/1995"
-            self._tariff_points = 20
-        else:
-            self.student_no = student_no
-            self.student_name = student_name
-            self.date_of_birth = date_of_birth
-            self.tariff_points = tariff_points
-
-        Student._no_of_students += 1
-
-    @classmethod
-    def get_no_of_students(cls):
-        return cls._no_of_students
-
-    @property
-    def student_no(self):
-        return self._student_no
-
-    @student_no.setter
-    def student_no(self, value):
-        if value is None or not str(value).strip():
-            raise ValueError("Student number cant be empty.")
-        self._student_no = value
-
-    @property
-    def student_name(self):
-        return self._student_name
-
-    @student_name.setter
-    def student_name(self, value):
-        if value is None or not str(value).strip():
-            raise ValueError("Student name cant be empty.")
-        self._student_name = value
-
-    @property
-    def date_of_birth(self):
-        return self._date_of_birth
-
-    @date_of_birth.setter
-    def date_of_birth(self, value):
-        if value is None or not str(value).strip():
-            raise ValueError("Date of birth cant no value.")
-        self._date_of_birth = value
-
-    @property
-    def tariff_points(self):
-        return self._tariff_points
-
-    @tariff_points.setter
-    def tariff_points(self, value):
-        if value < 20 or value > 280:
-            raise ValueError("Tariff points must be between 20 and 280.")
-        self._tariff_points = value
 
 def act_one():
     lists = [0] * 10
@@ -225,71 +162,56 @@ def act_five():
 
 
 def act_six():
-    student1 = Student()
-    student2 = Student("ST10234", "Alice Smith", "2002/5/14", 180)
+    basic_salary = float(input("Enter the basic salary: "))
+    hra = float(input("Enter the HRA: "))
+    ta = float(input("Enter the TA: "))
+    others = float(input("Enter the Others: "))
 
-    print(f"Student 1 Name: {student1.student_name}") 
-    print(f"Student 1 Points: {student1.tariff_points}")
-    
-    print(f"Student 2 Name: {student2.student_name}")
-    print(f"Student 2 Points: {student2.tariff_points}")
+    da = 0.12 * basic_salary    
+    # Tax cuts
+    pf = 0.14 * basic_salary
+    it = 0.15 * basic_salary
+    net_salary = basic_salary + da + hra + ta + others - (pf + it)
 
-    print(f"Total Students Created: {Student.get_no_of_students()}")
-
-def act_seven():
-    file_path = "data.txt"
-    try:
-        print("--- Reading Data from File ---")
-        print("E No.\tE Name\t\tMobile")
-        print("---------------------------------")
-        
-        with open(file_path, 'r') as file:
-            for line in file:
-                data = re.split(r'[,\t]', line.strip('\n'))
-                
-                if len(data) == 3:
-                    e_number = data[0].strip()
-                    e_name = data[1].strip()
-                    mobile = data[2].strip()
-                    print(f"{e_number}\t{e_name}\t\t{mobile}")
-                    
-    except FileNotFoundError:
-        print("Could not find the file.")
-        print(f"The location at {os.path.abspath(file_path)} may not exist")
+    print(f"Net Salary: ${net_salary:,.2f}")
 
 def main():
-    print("=== SELECT A PROGRAM ===")
-    print("1. Positive/Negative Stats & Minimum Value")
-    print("2. Remove Duplicates & Find 2nd Smallest/Largest")
-    print("3. Delete a element in an array from specific position")
-    print("4. Even elements and odd elements in array")
-    print("5. A and Stars")
-    print("6. Student Tariff Points System")
-    print("7. Tab separated data on text")
-    
-    try:
-        choice = int(input("Enter your choice (1, 2, 3, 4, 5, 6, or 7): "))
-        print()
+    while True:
+        print("\n=== SELECT A PROGRAM ===")
+        print("1. Positive/Negative Stats & Minimum Value")
+        print("2. Remove Duplicates & Find 2nd Smallest/Largest")
+        print("3. Delete a element in an array from specific position")
+        print("4. Even elements and odd elements in array")
+        print("5. A and Stars")
+        print("6. Calculate Net Salary")
+        
+        try:
+            choice = int(input("Enter your choice (1, 2, 3, 4, 5, or 6): "))
+            print()
 
-        match choice:
-            case 1:
-                act_one()
-            case 2:
-                act_two()
-            case 3:
-                act_three()
-            case 4:
-                act_four()
-            case 5:
-                act_five()
-            case 6:
-                act_six()
-            case 7:
-                act_seven()
-            case _:
-                print("Invalid choice! Please restart and enter a number between 1 and 7.")
-                
-    except ValueError:
-        print("\nInvalid input! Please enter a valid integer choice.")
+            match choice:
+                case 1:
+                    act_one()
+                case 2:
+                    act_two()
+                case 3:
+                    act_three()
+                case 4:
+                    act_four()
+                case 5:
+                    act_five()
+                case 6:
+                    act_six()
+                case _:
+                    print("Invalid choice! Please restart and enter a number between 1 and 7.")
+                    
+        except ValueError:
+            print("\nInvalid input! Please enter a valid integer choice.")
+
+        choice = input("\nWould you like to continue (Y/N): ")
+        if choice == "N" or choice == "n":
+            print("Exiting the program... ")
+            break
+        
 
 main()
