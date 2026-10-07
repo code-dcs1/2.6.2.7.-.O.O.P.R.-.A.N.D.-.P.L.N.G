@@ -76,48 +76,57 @@ class Student {
 
 public class Main {
     public static void main(String[] args) {
-        Scanner menuScanner = new Scanner(System.in);
         
-        System.out.println("=== SELECT A PROGRAM ===");
-        System.out.println("1. Positive/Negative Stats & Minimum Value");
-        System.out.println("2. Remove Duplicates & Find 2nd Smallest/Largest");
-        System.out.println("3. Delete a element in an array from specific position");
-        System.out.println("4. Even elements and odd elements in array");
-        System.out.println("5. A and Stars");
-        System.out.println("6. Student Tariff Points System");
-        System.out.println("7. Tab separated data on text");
-        System.out.print("Enter your choice (1, 2, 3, 4, 5, 6, or 7): ");
+        while(true) {
+            Scanner menuScanner = new Scanner(System.in);
         
-        int choice = menuScanner.nextInt();
-        System.out.println();
+            System.out.println("=== SELECT A PROGRAM ===");
+            System.out.println("1. Positive/Negative Stats & Minimum Value");
+            System.out.println("2. Remove Duplicates & Find 2nd Smallest/Largest");
+            System.out.println("3. Delete a element in an array from specific position");
+            System.out.println("4. Even elements and odd elements in array");
+            System.out.println("5. A and Stars");
+            System.out.println("6. Student Tariff Points System");
+            System.out.println("7. Tab separated data on text");
+            System.out.print("Enter your choice (1, 2, 3, 4, 5, 6, or 7): ");
+        
+            int choice = menuScanner.nextInt();
+            System.out.println();
 
-        switch (choice) {
-            case 1:
-                actOne();
+            switch (choice) {
+                case 1:
+                    actOne();
+                    break;
+                case 2:
+                    actTwo();
+                    break;
+                case 3:
+                    actThree();
+                    break;
+                case 4:
+                    actFour();
+                    break;
+                case 5:
+                    actFive();
+                    break;
+                case 6:
+                    actSix();
+                    break;
+                case 7:
+                    actSeven();
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please restart and enter 1 or 2.");
+            }
+            
+            System.out.println("Do you want to continue (Y/N): ");
+            String repeatProgram = menuScanner.next();
+            
+            if(repeatProgram.equals("n")) {
+                System.out.println("Exiting the program");
                 break;
-            case 2:
-                actTwo();
-                break;
-            case 3:
-                actThree();
-                break;
-            case 4:
-                actFour();
-                break;
-            case 5:
-                actFive();
-                break;
-            case 6:
-                actSix();
-                break;
-            case 7:
-                actSeven();
-                break;
-            default:
-                System.out.println("Invalid choice! Please restart and enter 1 or 2.");
+            }
         }
-        
-        menuScanner.close();
     }
 
     public static void actOne() {
@@ -210,8 +219,6 @@ public class Main {
             System.out.println("Second smallest element: " + sSmall);
             System.out.println("Second largest element: " + sLarge);
         }
-
-        scanner.close();
     }
 
     public static void actThree() {
@@ -232,7 +239,7 @@ public class Main {
         System.out.print("Enter position of Element to Delete: ");
         int pos = scanner.nextInt();
         
-        if (pos < 0 || pos >= arr.length) {
+        if (pos < -1 || pos >= arr.length) {
             System.out.println("Invalid position");
         } else {
             for (int i = pos; i < arr.length - 1; i++) {
@@ -245,8 +252,6 @@ public class Main {
             }
             System.out.println();
         }
-        
-        scanner.close();
     }
 
     public static void actFour() {
