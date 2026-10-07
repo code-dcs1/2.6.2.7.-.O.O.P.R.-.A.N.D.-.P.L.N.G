@@ -162,17 +162,22 @@ def act_five():
 
 
 def act_six():
-    basic_salary = float(input("Enter the basic salary: "))
-    hra = float(input("Enter the HRA: "))
-    ta = float(input("Enter the TA: "))
-    others = float(input("Enter the Others: "))
+    basic_salary = 12000
+    hra = 150
+    ta = 120
+    others = 450
 
     da = 0.12 * basic_salary    
-    # Tax cuts
     pf = 0.14 * basic_salary
     it = 0.15 * basic_salary
     net_salary = basic_salary + da + hra + ta + others - (pf + it)
 
+    print(f"Basic Salary: ${basic_salary:,.2f}")
+    print(f"DA: ${da:,.2f}")
+    print(f"HRA: ${hra:,.2f}")
+    print(f"TA: ${ta:,.2f}")
+    print(f"Others: ${others:,.2f}")
+    print(f"Tax Cuts: ${(pf + it):,.2f}")
     print(f"Net Salary: ${net_salary:,.2f}")
 
 def main():
@@ -203,7 +208,7 @@ def main():
                 case 6:
                     act_six()
                 case _:
-                    print("Invalid choice! Please restart and enter a number between 1 and 6.")
+                    print("Invalid choice! Please restart and enter a number between 1 and 7.")
                     
         except ValueError:
             print("\nInvalid input! Please enter a valid integer choice.")
