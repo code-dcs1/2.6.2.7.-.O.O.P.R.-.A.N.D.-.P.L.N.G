@@ -1,12 +1,42 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+
+class InputChecks { 
+    Scanner inputs = new Scanner(System.in);
+    
+    public int regularInput(String prompt, String guidelines)  {
+        int currentInput = 0;
+        while(true) {
+            try {
+                System.out.print(prompt);
+                currentInput = inputs.nextInt();
+                break;
+            } catch (InputMismatchException | IllegalArgumentException e) {
+                System.out.println("Input error, try to follow the guidelines for the input\n[ " + guidelines + " ]\n");
+                inputs.nextLine();
+            }
+        }
+
+        return currentInput; 
+    } 
+}
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        InputChecks mainInput = new InputChecks();
+        int balance = -1;
 
         System.out.println("Welcome!");
-        System.out.print("Enter your initial balance: ");
-        int balance = scanner.nextInt();
+        
+        while(true) {
+            balance = mainInput.regularInput("Enter your initial balance: ","The input should be a number");
+            if(balance < 0) {
+                System.out.print("The balance should be not less than 0\n\n");
+             } else {
+                break;
+             }
+        }
 
         boolean running = true;
 
@@ -19,13 +49,25 @@ public class Main {
             System.out.println("--------------------------------------------------");
             System.out.print("Enter your choice (1-3): ");
             
-            int choice = scanner.nextInt();
+            int choice = -1;
+            while(true) {
+                choice = mainInput.regularInput("Enter your initial balance: ","The input should be a number");
+                break;
+            }
 
             switch (choice) {
                 case 1:
                     System.out.println("How much amount you want to withdraw from your account?");
                     System.out.print("Amount: ");
-                    int withdrawAmount = scanner.nextInt();
+                    int withdrawAmount = -1;
+                    while(true) {
+                        withdrawAmount = mainInput.regularInput("Enter your initial balance: ","The input should be a number");
+                        if(withdrawAmount < 0) {
+                            System.out.print("The balance should be not less than 0\n\n");
+                         } else {
+                            break;
+                         }
+                    }
                     
                     if (withdrawAmount > balance) {
                         System.out.println("Transaction failed: Insufficient funds!");
@@ -40,7 +82,15 @@ public class Main {
                 case 2:
                     System.out.println("How much amount you want to deposit in your account?");
                     System.out.print("Amount: ");
-                    int depositAmount = scanner.nextInt();
+                    int depositAmount = -1;
+                    while(true) {
+                        depositAmount = mainInput.regularInput("Enter your initial balance: ","The input should be a number");
+                        if(depositAmount < 0) {
+                            System.out.print("The balance should be not less than 0\n\n");
+                         } else {
+                            break;
+                         }
+                    }
                     
                     if (depositAmount < 0) {
                         System.out.println("Invalid deposit amount!");
