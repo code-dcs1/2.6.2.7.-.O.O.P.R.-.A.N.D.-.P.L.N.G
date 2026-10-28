@@ -7,10 +7,10 @@ public class Main {
         System.out.println("OUTPUT IN ACTIVITY 3");
 
         System.out.println("Enter the Dean's details:");
-        Dean dean = new Dean(readText("  Name: "), readSalary("  Salary: "), readText("  Department: "));
+        Dean dean = new Dean(inputText("  Name: "), inputNumber("  Salary: "), inputText("  Department: "));
 
         System.out.println("Enter the Executive's details:");
-        Executive executive = new Executive(readText("  Name: "), readSalary("  Salary: "), readText("  Department: "));
+        Executive executive = new Executive(inputText("  Name: "), inputNumber("  Salary: "), inputText("  Department: "));
 
         System.out.println();
         System.out.println(dean);
@@ -18,7 +18,7 @@ public class Main {
         System.out.println(executive);
     }
 
-    static double readSalary(String prompt) {
+    static double inputNumber(String prompt) {
         while (true) {
             System.out.print(prompt);
             try {
@@ -33,7 +33,7 @@ public class Main {
         }
     }
 
-    static String readText(String prompt) {
+    static String inputText(String prompt) {
         while (true) {
             System.out.print(prompt);
             String text = scanner.nextLine().trim();
