@@ -155,8 +155,66 @@ public class Main {
         System.out.printf("Top branch %d", branches.length);
         return 0;
     }
+    
+    public static int Classroom_Seat_Booking() {
+        Scanner scanner = new Scanner(System.in);
+        int[][] sales = new int[4][5];
+
+        while(true) {
+            System.out.print("1 Book | 2 Cancel | 3 Display | 0 Exit")
+            int eff;
+            while (true) {
+                try {
+                    eff = scanner.nextInt();
+                    if (eff < -1 && eff > 3) {
+                        throw new IllegalArgumentException("Array size must be greater than 0.");
+                    } else {
+                        break;
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input! Please enter a valid integer: ");
+                    scanner.next();
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Array size can't be 0 or negative. Re-enter: ");
+                }
+            }
+
+            switch(eff):
+                case 1:
+                    break
+                case 2:
+                    break
+                    System.out.print("Row: ");
+                    System.out.print("Column: ");
+                case 3:
+                    break
+                     for(int x = 0; x < 4; x++) {
+                        for(int y = 0; y < 5; y++) {
+                            System.out.print("0 ");
+                        }
+                        System.out.println();
+                    }
+                case 0:
+                    zt = 1;
+                    break;
+                default:
+                    break;
+            
+            if(zt == 1) {
+                break;
+            }
+            for(int x = 0; x < 4; x++) {
+                for(int y = 0; y < 5; y++) {
+                    System.out.print("0 ");
+                }
+                System.out.println();
+            }
+        }
+
+        return 0;
+    }
 
     public static void main(String[] args) {
-        Branch_Sales_Matrix();
+        Classroom_Seat_Booking();
     }
 }
